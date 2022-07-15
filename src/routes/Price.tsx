@@ -60,7 +60,7 @@ export default function Price({ coinId }: IChartProps) {
             ) : (
                 <Container>
                     {datas?.map((price) => (
-                        <PriceItem>
+                        <PriceItem key={price.time_close}>
                             <PriceData>
                                 <ItemTitle>Time</ItemTitle>
                                 <ItemValue>{price.time_close}</ItemValue>
