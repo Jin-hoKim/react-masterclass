@@ -76,6 +76,13 @@ const Tab = styled.span<{ isActive: boolean }>`
     }
 `;
 
+const BackBtn = styled.span`
+    cursor: pointer;
+    font-size: 12px;
+    background-color: ${(props) => props.theme.textColor}
+    color: ${(props) => props.theme.bgColor}
+`;
+
 interface IRouteState {
     state: {
         id: string;
@@ -168,6 +175,9 @@ export default function Coin() {
 
     return (
         <Container>
+            <BackBtn>
+                <Link to="/">back</Link>
+            </BackBtn>
             <Helmet>
                 <title>{coinId ? data?.name : "Loading..."}</title>
             </Helmet>
@@ -220,7 +230,10 @@ export default function Coin() {
                             path="chart"
                             element={<Chart coinId={"" + coinId} />}
                         />
-                        <Route path="price" element={<Price />} />
+                        <Route
+                            path="price"
+                            element={<Price coinId={"" + coinId} />}
+                        />
                     </Routes>
                 </>
             )}
